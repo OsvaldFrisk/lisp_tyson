@@ -1,6 +1,72 @@
 #include "mpc.h"
 #include <editline/readline.h>
 
+
+enum { LERR_DIV_ZERO, LERR_BAD_OP, LERR_BAD_NUM };
+enum { LVAL_NUM, LVAL_ERR };
+
+typedef struct {
+  int type;
+  long num;
+  int err;
+} lval;
+
+lval lval_num(long x) {
+  lval v;
+  v.type = LVAL_NUM;
+  v.num = x;
+  return v;
+}
+
+lval lval_err(int x) {
+  lval v;
+  v.type = LVAL_ERR;
+  v.err = x;
+  return v;
+}
+
+int number_of_nodes(mpc_ast_t* t){
+  if(t->children_num == 0) { return 1; }
+  else if(t->children_num >= 1) {
+    int total = 1;
+    for (int i = 0; i < t->children_num; i++){
+      total = total + number_of_nodes(t->children[i]);
+    }
+    return total;
+  }
+  return 0;
+}
+
+long eval_op(long x, char* op, long y){
+  if (strcmp(op, "+") == 0) { return x + y; }
+  if (strcmp(op, "-") == 0) { return x - y; }
+  if (strcmp(op, "*") == 0) { return x * y; }
+  if (strcmp(op, "/") == 0) { return x / y; }
+  return 0;
+}
+
+long eval(mpc_ast_t* t){
+  // If tagged as number we can return.
+  if(strstr(t->tag, "number")) {
+    return atoi(t->contents);
+  }
+
+  // The operator is always the second child.
+  char* op = t->children[1]->contents;
+
+  // We store the third child in x.
+  long x = eval(t->children[2]);
+
+  // Iterate the remaining children then combining.
+  int i = 3;
+  while (strstr(t->children[i]->tag, "expr")) {
+    x = eval_op(x, op, eval(t->children[i]));
+    i++;
+  }
+  return x;
+}
+
+
 int main(int argc, char** argv) {
   
   /* Create Some Parsers */
@@ -31,8 +97,26 @@ int main(int argc, char** argv) {
     mpc_result_t r;
     if (mpc_parse("<stdin>", input, Tyson, &r)) {
       /* On success print and delete the AST */
-      mpc_ast_print(r.output);
+      //mpc_ast_print(r.output);
+      long result = eval(r.output);
+      printf("%li\n", result);
       mpc_ast_delete(r.output);
+
+
+      /*
+      mpc_ast_t* output = r.output;
+      printf("Tag : %s\n", output->tag);
+      printf("Contents : %s\n", output->contents);
+      printf("Number of children : %i\n", output->children_num);
+
+      mpc_ast_t* c0 = output->children[0];
+      printf("First Child Tag: %s\n", c0->tag);
+      printf("First Child Contents: %s\n", c0->contents);
+      printf("First Child Number of children: %i\n", c0->children_num);
+      */
+      
+
+
     } else {
       /* Otherwise print and delete the Error */
       mpc_err_print(r.error);
