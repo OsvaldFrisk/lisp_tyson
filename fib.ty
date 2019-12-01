@@ -1,0 +1,23 @@
+(load "tyson.ty")
+
+
+(def {n} 18)
+
+
+;(print "Loading...")
+;(print "Using Osvalds personal programming language")
+
+
+; Fibonacci
+
+(fun {fib n} {
+  select
+    { (== n 0) 0 }
+    { (== n 1) 1 }
+    { otherwise (+ (fib (- n 1)) (fib (- n 2))) }
+})
+
+
+(print "Calculating Fibonacci for" n)
+(print (fib n))
+
