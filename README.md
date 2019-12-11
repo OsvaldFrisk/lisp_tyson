@@ -27,7 +27,7 @@ cp -r tyson_extension/ ~/.vscode/extensions/tyson_extension
 
 If you followed the instructions and they all worked, opening the program `./programs/fib.ty` in vscode should look like so.
 
-![vsc_fib](https://github.com/OsvaldFrisk/lisp_tyson/blob/master/documentation/vscode_fib.png)
+![vsc_fib](https://github.com/OsvaldFrisk/lisp_tyson/blob/master/documentation/vsc_fib.png)
 
 And finally running the program should look like so:
 ```
