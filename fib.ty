@@ -1,14 +1,8 @@
 (load "tyson.ty")
 
-
-(def {n} 18)
-
-
-;(print "Loading...")
-;(print "Using Osvalds personal programming language")
-
-
 ; Fibonacci
+
+(def {n} 20)
 
 (fun {fib n} {
   select
@@ -18,6 +12,6 @@
 })
 
 
-(print "Calculating Fibonacci for" n)
+(print "Calculating Fibonacci for 20")
 (print (fib n))
 
