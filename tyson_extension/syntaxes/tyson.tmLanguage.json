@@ -1,0 +1,32 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Tyson",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.tyson",
+				"match": "\\b(list|head|tail|eval|join|def|if|load|error|print|fun)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.tyson",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.tyson",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "source.tyson"
+}

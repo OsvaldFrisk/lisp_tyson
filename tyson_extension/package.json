@@ -1,0 +1,25 @@
+{
+    "name": "tyson",
+    "displayName": "tyson",
+    "description": "Lisp languaged based on http://www.buildyourownlisp.com/",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.40.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "tyson",
+            "aliases": ["Tyson", "tyson"],
+            "extensions": [".ty",".tyson",".tsn"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "tyson",
+            "scopeName": "source.tyson",
+            "path": "./syntaxes/tyson.tmLanguage.json"
+        }]
+    }
+}
