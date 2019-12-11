@@ -13,7 +13,7 @@ To run Tyson you need a compiled version of the C code and thus you need a C com
 Running the following command in the terminal should result in an executable named _tyson_.
 
 ```
-cc -std=c99 -Wall parsing.c mpc.c -ledit -lm -o tyson
+cc -std=c99 -Wall tyson.c mpc.c -ledit -lm -o tyson
 ```
 
 ## Editor and Tyson
@@ -38,6 +38,5 @@ $6765
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* [Mr Daniel Holden for his great book](http://www.buildyourownlisp.com/)
+* [Yo Code - Extension and Customization Generator](https://www.npmjs.com/package/generator-code)
