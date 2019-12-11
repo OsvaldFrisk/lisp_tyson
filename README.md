@@ -2,7 +2,7 @@
 
 Tyson is a lisp language implemented entirely in C. I recently did course at university in programming paradigms, in which I programmed my first lisp program. Having enjoyed the experience and yearning for a chance to write serious program in C, I found the book [`Build Your Own Lisp`](http://www.buildyourownlisp.com/). This is also where the inspiration of the name for the language comes from, in the fourth subsection of the first chapter, [`Why build a Lisp `](http://www.buildyourownlisp.com/chapter1_introduction#why_build_a_lisp), the author lightens up the mood by posting the following picture.
 
-![Lisp_user](./documentation/your_typical_Lisp_user)
+![Lisp_user](https://github.com/OsvaldFrisk/lisp_tyson/blob/master/documentation/your_typical_Lisp_user.png)
 
 
 ### Prerequisites
