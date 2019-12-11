@@ -1,8 +1,6 @@
-(load "tyson.ty")
+(load "./programs/tyson.ty")
 
 ; Fibonacci
-
-(def {n} 20)
 
 (fun {fib n} {
   select
@@ -11,7 +9,7 @@
     { otherwise (+ (fib (- n 1)) (fib (- n 2))) }
 })
 
+(print "Calculating Fibonacci for 20...")
+(print (fib 20))
 
-(print "Calculating Fibonacci for 20")
-(print (fib n))
 
